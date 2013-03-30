@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="themes/testiteema.min.css" />
+		<link rel="stylesheet" href="jqueryui/jquery.mobile.custom.structure.css" />
+		<script src="jquery-1.9.1.min.js"></script>
+
+		<script type="text/javascript" src="jqueryui/jquery.mobile.custom.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/index.js"></script>
+		<title>Avoine j&auml;senpalvelu</title>
+	</head>
+
+	<body>
+	<script type="text/javascript" src="cordova-2.4.0.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
+		<script type="text/javascript">
+			document.addEventListener("deviceready", onDeviceReady, false);
+     		document.addEventListener("deviceready", initPushwoosh, true);    
+     		 
+		</script>
+        Odota, sivua ladataan ..
+		<!-- MAIN BEGIN -->
+		<div data-role="page" data-theme="b" id="start">
+			<div data-role="header" data-theme="b">
+				<h1>Avoine j&auml;senpalvelu</h1>
+			</div>
+			<div data-role="content">
+ <div style=" text-align:center">
+                    <img style="width: 288px;" src="http://www.avoine.fi/site/templates/styles/images/logo.png" />
+                </div>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a data-role="button" onClick="onDeviceReadylink('http://jasenpalvelu.pwire.fi?')" target="_blank" href="#page1" data-icon="star" data-iconpos="top"  data-theme="b">
+                            J&auml;sen-<br>palvelu
+                        </a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" onClick="onDeviceReadylink('http://tapu.pwire.fi/tapahtumat/?')"  data-icon="bars" data-iconpos="top"  data-theme="b"href="#page1">
+                            Tapahtumat<br>&nbsp;
+                        </a>
+                    </div>
+                    <div class="ui-block-a">
+                        <a data-role="button"  onClick="onDeviceReadylink('http://www.avoine.fi?')"  data-icon="home" data-iconpos="top"  data-theme="b"  href="#page1">
+                            Avoine<br>&nbsp;
+                        </a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a data-role="button" href="#asetukset"  data-icon="gear" data-iconpos="top"  data-theme="b"  href="#page1">
+                            Asetukset<br>&nbsp;
+                        </a>
+                    </div>
+                </div>
+               
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div id="connectstatustitle" data-role="collapsible" >
+				<h4>Eventlog</h4>
+				<div id="connectstatus"></div>
+				</div>
+
+			</div>
+		</div>
+</div>
+		<!-- MAIN END -->
+		<!-- ASETUKSET BEGIN -->
+<div data-role="page" data-theme="b" id="asetukset" >
+
+	<div data-role="header" data-theme="b"  >
+		<h1>Asetukset</h1>
+		<a href="#start" data-icon="back" data-role="button" data-theme="b" data-inline="true">Takaisin</a>
+	</div>
+	<div data-role="content">
+				<div data-role="collapsible-set" >
+					<div data-role="collapsible">
+						<h4>Kirjautumisasetukset</h4>
+
+						<form name="jas" id="jas" method="post" action="">
+
+							<table>
+								<tr><td>K&auml;ytt&auml;j&auml;tunnus</td><td><input type="text" name="username" id="username"></td></tr>
+								<tr><td>Salasana</td><td><input type="password" name="password" id="password"></td></tr>
+								<!--<tr><td>Muista minut T�ss� laittee</td><td><input type="checkbox"></td></tr>-->
+								<tr><td><input type="button" id="tallenna" onClick="doPost(this);"  data-icon="check" name="submit" value="Tallenna"></td></tr>
+							</table>
+							<!--tulos:<div id="result">&nbsp;</div>  -->
+						</form>
+					</div>
+					<div data-role="collapsible">
+					
+						<h4>Ilmoitusasetukset</h4>
+						<form name="ilm" id="ilm" method="post" action="">
+						<table>
+							<tr>
+								<td>
+									<label for="slider2">Tapahtumailmoitukset:</label>
+								</td>
+								<td>
+									<select name="group1" id="group1" data-role="slider">
+										<option value="off">Ei</option>
+										<option value="on">Kyll&auml;</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="slider2">J&auml;senpalvelun viestit:</label>
+								</td>
+								<td>
+									<select name="group2" id="group2" data-role="slider">
+										<option value="off">Ei</option>
+										<option value="on">Kyll&auml;</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="slider2">Kyselyt:</label>
+								</td>
+								<td>
+									<select name="group3" id="group3" data-role="slider">
+										<option value="off">Ei</option>
+										<option value="on">Kyll&auml;</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="slider2">Yhteisty&ouml;kumppanien ilmoitukset:</label>
+								</td>
+								<td>
+									<select name="group4" id="group4" data-role="slider">
+										<option value="off">Ei</option>
+										<option value="on">Kyll&auml;</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<input type="button" data-icon="check" onClick="doSaveSettings();" value="Tallenna" class="ui-btn-center">
+									
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+				<div data-role="footer" data-position="fixed">
+				<div id="connectstatustitle2" data-role="collapsible" >
+				<h4>Eventlog</h4>
+				<div id="connectstatus2"></div>
+				</div>
+
+			</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- ASETUKSET END -->
+
+</body>
+</html>
